@@ -7,6 +7,8 @@ interface ModalProviderProps {
 interface ModalOpenContextType {
   isNewDirectoryModalOpen: boolean
   setIsNewDirectoryModalOpen: (newDirectoryOpen: boolean) => void
+  isNewRssModalOpen: boolean
+  setIsNewRssModalOpen: (newDirectoryOpen: boolean) => void
   isSettingsModalOpen: boolean
   setIsSettingsModalOpen: (settingsOpen: boolean) => void
 }
@@ -23,16 +25,19 @@ export const useModalOpeners = (): ModalOpenContextType => {
 
 export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
   const [isNewDirectoryModalOpen, setIsNewDirectoryModalOpen] = useState(false)
+  const [isNewRssModalOpen, setIsNewRssModalOpen] = useState(false)
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
 
   const modalOpenContextValue = useMemo(
     () => ({
       isNewDirectoryModalOpen,
       setIsNewDirectoryModalOpen,
+      isNewRssModalOpen,
+      setIsNewRssModalOpen,
       isSettingsModalOpen,
       setIsSettingsModalOpen,
     }),
-    [isNewDirectoryModalOpen, isSettingsModalOpen],
+    [isNewDirectoryModalOpen, isNewRssModalOpen, isSettingsModalOpen],
   )
 
   return <ModalContext.Provider value={modalOpenContextValue}>{children}</ModalContext.Provider>

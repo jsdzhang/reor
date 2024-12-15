@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 
 import AnalyticsSettings from './AnalyticsSettings'
@@ -25,6 +26,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
   onClose: onCloseFromParent,
   initialTab = SettingsTab.GeneralSettingsTab,
 }) => {
+  const { t } = useTranslation()
   const [willNeedToReIndex, setWillNeedToReIndex] = useState(false)
   const [activeTab, setActiveTab] = useState<SettingsTab>(initialTab)
 
@@ -57,7 +59,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
               }`}
               onClick={() => setActiveTab(SettingsTab.GeneralSettingsTab)}
             >
-              Editor
+              {t('setting.editor')}
             </div>
             <div
               className={`flex cursor-pointer items-center rounded border-b border-gray-200 p-2 text-sm hover:bg-neutral-600 ${
@@ -65,7 +67,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
               }`}
               onClick={() => setActiveTab(SettingsTab.LLMSettingsTab)}
             >
-              LLM
+              {t('setting.llm')}
             </div>
             <div
               className={`flex cursor-pointer items-center rounded border-b border-gray-200 p-2 text-sm hover:bg-neutral-600 ${
@@ -75,7 +77,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
               }`}
               onClick={() => setActiveTab(SettingsTab.EmbeddingModelTab)}
             >
-              Embedding Model
+              {t('setting.embedding')}
             </div>
             <div
               className={`flex cursor-pointer items-center rounded border-b border-gray-200 p-2 text-sm hover:bg-neutral-600 ${
@@ -83,7 +85,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
               }`}
               onClick={() => setActiveTab(SettingsTab.AnalyticsTab)}
             >
-              Analytics
+              {t('setting.analytics')}
             </div>
           </div>
 

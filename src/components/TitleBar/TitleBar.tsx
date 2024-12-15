@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { BsChatLeftDots, BsChatLeftDotsFill } from 'react-icons/bs'
 import NavigationButtons from './NavigationButtons'
 import ExternalLink from '../Common/ExternalLink'
@@ -7,6 +8,7 @@ import { useChatContext } from '@/contexts/ChatContext'
 export const titleBarHeight = '30px'
 
 const TitleBar: React.FC = () => {
+  const { t } = useTranslation()
   const { showChatbot, setShowChatbot } = useChatContext()
   const [platform, setPlatform] = useState('')
 
@@ -30,7 +32,7 @@ const TitleBar: React.FC = () => {
         style={platform === 'win32' ? { marginRight: '8.5rem' } : { marginRight: '0.3rem' }}
       >
         <ExternalLink href="https://forms.gle/8H4GtEcE6MBnNAUa7" className="decoration-gray-200">
-          <span className="mr-2 cursor-pointer text-sm text-gray-200 hover:text-gray-300">Feedback</span>
+          <span className="mr-2 cursor-pointer text-sm text-gray-200 hover:text-gray-300">{t('common.feedback')}</span>
         </ExternalLink>
         {showChatbot ? (
           <BsChatLeftDotsFill

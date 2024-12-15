@@ -3,10 +3,13 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import * as Sentry from '@sentry/electron/renderer'
 import { toast } from 'react-toastify'
+import { I18nextProvider } from 'react-i18next'
 
 import App from './App'
 import './styles/global.css'
 import errorToStringRendererProcess from './lib/error'
+
+import i18next from '@/locale'
 
 if (process.env.NODE_ENV === 'production') {
   Sentry.init({
@@ -30,4 +33,8 @@ window.addEventListener('unhandledrejection', (event) => {
   }
 })
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(<App />)
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <I18nextProvider i18n={i18next} defaultNS="translation">
+    <App />
+  </I18nextProvider>,
+)

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FaSearch } from 'react-icons/fa'
+import { FaRegNewspaper, FaSearch } from 'react-icons/fa'
 import { GrNewWindow } from 'react-icons/gr'
 import { ImFilesEmpty } from 'react-icons/im'
 import { IoChatbubbleEllipsesOutline } from 'react-icons/io5'
@@ -34,6 +34,19 @@ const IconsSidebar: React.FC<IconsSidebarProps> = ({ getShortcutDescription }) =
             color={sidebarShowing === 'files' ? 'white' : 'gray'}
             size={18}
             title={getShortcutDescription('open-files') || 'Open Files'}
+          />
+        </div>
+      </div>
+      <div
+        className=" flex h-8 w-full cursor-pointer items-center justify-center"
+        onClick={() => setSidebarShowing('rss')}
+      >
+        <div className="flex size-4/5 items-center justify-center rounded hover:bg-neutral-700">
+          <FaRegNewspaper
+            className="mx-auto text-gray-200"
+            color={sidebarShowing === 'rss' ? 'white' : 'gray'}
+            size={18}
+            title={getShortcutDescription('open-rss') || 'RSS'}
           />
         </div>
       </div>
